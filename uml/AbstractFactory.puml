@@ -1,0 +1,87 @@
+@startuml
+' left to right direction
+
+' skinparam linetype ortho
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' left to right direction
+
+
+' -->：默认向右
+
+' <--：默认向左
+
+' -up->：向上
+
+' -down->：向下
+
+interface UiComponent {
+     draw(): void
+}
+
+abstract class Button  implements UiComponent{
+    {abstract} draw(): void
+}
+
+abstract class TextArea implements UiComponent{
+    {abstract}  draw(): void
+}
+
+
+class WinButton extends Button {
+     + draw() : void
+}
+
+class WinTextArea extends TextArea {
+     + draw() : void
+}
+
+class LinuxButton extends Button {
+     + draw() : void
+}
+
+class LinuxTextArea extends TextArea {
+     + draw(): void
+}
+
+
+abstract class UiComponentFactory {
+    +enviroment: String 
+    {abstract}  createButton() : Button
+    {abstract}  createTextArea() : TextArea
+}
+
+class WinComponentFactory extends UiComponentFactory {
+
+    + createButton() : Button
+    + createTextArea(): TextArea
+}
+WinComponentFactory ..> WinButton : uses
+WinComponentFactory ..> WinTextArea : uses
+class LinuxComponentFactory extends UiComponentFactory {
+
+    + createButton() : Button
+    + createTextArea() : TextArea
+}
+LinuxComponentFactory ..> LinuxButton : uses
+LinuxComponentFactory ..> LinuxTextArea : uses
+
+class Client {
+    void operate()
+}
+
+Client ..> UiComponentFactory : createButton()
+Client ..> UiComponentFactory : createTextArea()
+
+UiComponentFactory -[#white]> UiComponent
+
+WinComponentFactory -[#white]> Button
+LinuxComponentFactory -[#white]> Button
+
+WinComponentFactory -[#white]> TextArea
+LinuxComponentFactory -[#white]> TextArea
+
+LinuxComponentFactory -[#white]> WinTextArea
+@enduml

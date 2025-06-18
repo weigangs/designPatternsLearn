@@ -1,0 +1,47 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+interface Product {
+    void operate()
+}
+
+class ConcreteProduct {
+    +attr: String 
+     operate(): void
+}
+
+interface Builder {
+     withArgumentA(argA: TypeA): Builder
+     withArgumentB(argB: TypeB): Builder
+     withArgumentC( argC: TypeC)  : Builder
+     withArgumentD( argD: TypeD)  : Builder
+     build() : Product
+}
+
+class ConcreteBuilder  {
+     + withArgumentA(Object argA): Builder
+     + withArgumentB(Object argB): Builder
+     + withArgumentC(Object argC): Builder
+     + withArgumentD(Object argD): Builder
+     + build(): Product
+}
+
+
+
+class Client {
+    void operate()
+}
+
+ConcreteProduct .up|> Product
+ConcreteBuilder .up|> Builder
+ConcreteBuilder ..right> ConcreteProduct
+Client  -[#white]> Product
+ConcreteProduct  -[#white]> Builder
+
+Client o--down Builder
+@enduml

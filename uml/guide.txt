@@ -1,0 +1,21 @@
+关系类型	PlantUML 语法	含义解释	UML图中常见含义
+继承	`A --	> B`	A 继承 B（class 继承 class）
+实现	`A ..	> B`	A 实现 B（class 实现接口）
+关联	A --> B	A 关联 B，知道 B 的存在	Association（关联）
+依赖	A ..> B	A 使用 B，短暂依赖	Dependency（依赖）
+聚合	A o-- B	A 包含 B，生命周期独立	Aggregation（聚合）
+组合	A *-- B	A 包含 B，生命周期绑定	Composition（组合）
+双向关联	A <--> B	A 和 B 互相关联	双向 Association
+导航关联	A --> B : label	有向关联，加上说明文字	指明方向的 Association
+注释	note right of A	给 A 添加右侧注释	文档注释
+接口标识	interface MyInterface	定义接口	接口定义
+抽象类	abstract class A	定义抽象类	Abstract Class
+
+
+可见性	符号前缀	含义说明	对应 Java 修饰符
+public	+	公开成员	public
+private	-	私有成员	private
+protected	#	受保护成员	protected
+package	~	包内可见成员	(无修饰符，默认访问级别)
+static	{static}	静态成员	static
+abstract	{abstract}	抽象方法	abstract
