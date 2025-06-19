@@ -43,5 +43,6 @@ ConcreteBuilder ..right> ConcreteProduct
 Client  -[#white]> Product
 ConcreteProduct  -[#white]> Builder
 
-Client o--down Builder
+Client ..down> Builder
+Client ..down> Product
 @enduml

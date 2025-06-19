@@ -5,8 +5,8 @@
 |_1.1 抽象工厂（Abstract Factory）-对象创建型_|抽象出创建一批相关对象的接口|用来创建一个产品族|AbstractFactory（工厂抽象）<br>ConcreteFactory（具体工厂类）<br>AbstractProduct（产品抽象）<br>ConcreteProduct（具体产品）<br>Client|javax.xml.parsers.DocumentBuilderFactory<br>springframework.BeanFactory|
 |_1.2 生成器（Builder）-对象创建型_|把创建复杂对象的过程抽象出来|创建对象的过程复杂，且不同的创建过程对应对象的表示也不同|Builder（创建product对象过程的抽象）<br>ConcreteBuilder（具体的对象生成器）<br>Director（类似Client使用Builder的对象）<br>Product（产品）<br>Client|org.springframework.web.client.RestClient.Builder|
 |_1.3 工厂方法（Factory Method）-对象创建型_|单一对象的创建延迟到子类完成|当不知道应该创建哪个产品时，将创建对象任务交给具体子类（知道应该实例化哪个产品）完成|Product（Product抽象）<br>ConcreteProduct（具体的Product）<br>Creator（创建Product的抽象）<br>ConcreteCreator（具体的创建Product的类）<br>Client|java.sql.Driver<br>sun.util.spi.CalendarProvider|
-|_1.4 原型（Prototype）-对象创建型_|根据已有对象，复制出新的对象|从头实例化一个对象比较复杂，效率低，通过复制可提高效率|Prototype（抽象出克隆方法的接口）<br>ConcretePrototype（实现克隆方法的具体类）|jdk的Cloneable接口|
-|_1.5 单例（Singleton）-对象创建型_|某个类只存在一个实例对象|对开销大的对象只创建一次<br>对需要串行访问的数据或者执行的代码，全局只有一个统一调用入口|Singleton（单例对象）|spring的BeanFactory<br>数据库连接管理器|
+|_1.4 原型（Prototype）-对象创建型_|用克隆的方式创建新对象，而不是new|当对象状态只有几种，但是要创建大量对象实例时、且创建开销大时适用。比如迷宫的墙、门等对象，方向只有四种，可以提前创建好一种状态的对象实例，后续对象只需clone后对方向参数调整下，不用每个都创建|Prototype（抽象出克隆方法的接口）<br>ConcretePrototype（实现克隆方法的具体类）|jdk的Cloneable接口|
+|_1.5 单例（Singleton）-对象创建型_|控制某个类在系统中只存在一个实例|对开销大的对象只创建一次<br>对需要串行访问的数据或者执行的代码，全局只有一个统一调用入口|Singleton（单例对象）|spring的BeanFactory<br>数据库连接管理器|
 ## _创建型UML类图_
 ### 1.1 抽象工厂
 ![](out\uml\AbstractFactory\AbstractFactory.png)

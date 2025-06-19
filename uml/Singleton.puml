@@ -1,0 +1,36 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+interface Driver {
+    createConn() : Connection
+}
+
+class DriverHolder  {
+     - _instance: Driver
+     {static} +  getInstance() : Driver
+     - initInstance() : void
+}
+
+class MysqlDriver {
+    + createConn() : Connection
+}
+
+class OracleDriver {
+    + createConn() : Connection
+}
+
+MysqlDriver ..|> Driver
+OracleDriver ..|> Driver
+class Client {
+     operate() : void
+}
+DriverHolder ..> MysqlDriver
+DriverHolder ..> OracleDriver
+Client ..> DriverHolder
+Client ..> Driver
+@enduml

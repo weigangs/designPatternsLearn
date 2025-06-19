@@ -7,7 +7,7 @@ skinparam dpi 150
 ' up to down direction
 
 interface Product {
-    void operate()
+     operate(): void
 }
 
 class ConcreteProduct {
@@ -15,20 +15,12 @@ class ConcreteProduct {
      operate(): void
 }
 
-interface Builder {
-     withArgumentA(argA: TypeA): Builder
-     withArgumentB(argB: TypeB): Builder
-     withArgumentC( argC: TypeC)  : Builder
-     withArgumentD( argD: TypeD)  : Builder
-     build() : Product
+interface Creator {
+     factoryMethod() : Product
 }
 
-class ConcreteBuilder  {
-     + withArgumentA(Object argA): Builder
-     + withArgumentB(Object argB): Builder
-     + withArgumentC(Object argC): Builder
-     + withArgumentD(Object argD): Builder
-     + build(): Product
+class ConcreteCreator  {
+     + factoryMethod(): Product
 }
 
 
@@ -37,11 +29,11 @@ class Client {
     void operate()
 }
 
+ConcreteCreator .up|> Creator
 ConcreteProduct .up|> Product
-ConcreteBuilder .up|> Builder
-ConcreteBuilder ..right> ConcreteProduct
+ConcreteCreator ..right> ConcreteProduct
 Client  -[#white]> Product
-ConcreteProduct  -[#white]> Builder
 
-Client o--down Builder
+Client ..down> Creator
+Client ..down> Product
 @enduml

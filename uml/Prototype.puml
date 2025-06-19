@@ -1,0 +1,28 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+interface Prototype {
+    + clone() : Prototype
+}
+
+class ProtoTypeProduct  {
+     - height: int
+     - width: int
+     - direction: int
+     + clone() : ProtoTypeProduct
+}
+
+ProtoTypeProduct ..|> Prototype
+
+class Client {
+     operate() : void
+}
+
+Client ..down> ProtoTypeProduct
+
+@enduml
