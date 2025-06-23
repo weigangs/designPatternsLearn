@@ -6,31 +6,11 @@ skinparam defaultTextAlignment center
 skinparam dpi 150
 ' up to down direction
 
-interface Driver {
-    createConn() : Connection
+class Singleton {
+    {static} - _instance: Singleton
+    {static} + getInstance() : Singleton 
 }
-
-class DriverHolder  {
-     - _instance: Driver
-     {static} +  getInstance() : Driver
-     - initInstance() : void
-}
-
-class MysqlDriver {
-    + createConn() : Connection
-}
-
-class OracleDriver {
-    + createConn() : Connection
-}
-
-MysqlDriver ..|> Driver
-OracleDriver ..|> Driver
-class Client {
-     operate() : void
-}
-DriverHolder ..> MysqlDriver
-DriverHolder ..> OracleDriver
-Client ..> DriverHolder
-Client ..> Driver
+note right of Singleton::getInstance
+  This is a final method (cannot be overridden)
+end note
 @enduml

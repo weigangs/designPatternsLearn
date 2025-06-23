@@ -6,7 +6,7 @@ skinparam defaultTextAlignment center
 skinparam dpi 150
 ' up to down direction
 
-interface Prototype {
+class Prototype {
     + clone() : Prototype
 }
 
@@ -14,10 +14,10 @@ class ProtoTypeProduct  {
      - height: int
      - width: int
      - direction: int
-     + clone() : ProtoTypeProduct
+     + clone() : Prototype
 }
 
-ProtoTypeProduct ..|> Prototype
+ProtoTypeProduct --|> Prototype
 
 class Client {
      operate() : void
