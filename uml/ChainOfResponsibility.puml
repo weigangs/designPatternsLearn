@@ -1,0 +1,32 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class Handler {
+    - nextHandle: Handler
+    + setNext(nextHandle: Handler): void 
+    {abstract} + canHandle( request: Request ) : bool
+    {abstract} + handle(request: Request) : void 
+}
+
+class HandlerA {
+    - nextHandle: Handler
+    + setNext(nextHandle: Handler): void 
+    + canHandle( request: Request ) : bool
+    + handle(request: Request) : void 
+}
+
+class HandlerB {
+    - nextHandle: Handler
+    + setNext(nextHandle: Handler): void 
+    + canHandle( request: Request ) : bool
+    + handle(request: Request) : void 
+}
+
+HandlerA --|> Handler
+HandlerB --|> Handler
+@enduml

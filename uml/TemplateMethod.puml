@@ -1,0 +1,22 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class AbstractClass {
+
+  + doBusinessLogic() : void
+  - executeStepOne() : void 
+    - executeStepTwo() : void 
+     {abstract} + executeSpecialStep() : void 
+}
+
+class Subclass {
+  + executeSpecialStep() : void 
+}
+
+Subclass --|> AbstractClass
+@enduml

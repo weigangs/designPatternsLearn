@@ -33,3 +33,26 @@
 |_2.9 策略（Strategy）-对象行为型_|使多个算法独立封装且能互换|当需要的算法/或者行为不止一种时可使用<br>想避免多个if-else or switch时<br>对算法的改变对客户的使用无感知时<br>算法的扩展保持灵活性，且算法是在运行时指定的|Context（上下文）<br>Strategy（算法抽象）<br>ConcreteStrategy(具体算法)|Comparator<br>List（Context）<br>Comparator（Strategy）<br>Comparator.naturalOrder()（ConcreteStrategy）<br>spring中例子<br>DiscountStrategy（Strategy）<br>DiscountService（Context）<br>VipDiscountStrategy（ConcreteStrategy） |
 |_2.10 模板方法（Template Method）-类行为型_|定义好算法的不变骨架后，把特定的步骤留给子类实现|流程或者算法的基本骨架是固定的，只是某个步骤不同场景可能有所不同，这时可以将这个步骤变成钩子方法，让子类实现|AbstractClass（流程或者算法骨架在抽象类的方法中定义好）<br>Subclasses（实现了某个特殊步骤的子类）|###Real-world analogy <br> 1. Boil water <br> 2. Brew (tea/coffee) <br> 3. Pour into cup <br> 4. Add condiments (sugar/milk/lemon)<br> This process stays the same, but brewing and condiments differ between coffee and tea. That’s a Template Method!<br>###JdbcTemplate ，RestTemplate，RedisTemplate<br>query(), execute() in JdbcTemplate（Template Method）<br> RowMapper.mapRow()（Custom Step）<br>Connection mgmt, SQL execution（Fixed Steps） |
 |_2.11 访问者（Visitor）-对象行为型_|在不改变一组具有相关性对象的前提下，给这些对象增加新的操作|想给结构具有相似性的一组对象增加一些不同的操作<br>将这一组对象与它们的行为分离|Visitor（定义对一组对象的操作的抽象）<br>ConcreteVisitor（作用在这一组对象上的具体的行为）<br> Node(一组对象的抽象)<br>ConcreteNode（具体某个对象）|### javax.lang.model.util.SimpleElementVisitor9<br> ElementVisitor （Visitor）<br>SimpleElementVisitor9(ConcreteVisitor)<br> Element  （Node）<br> TypeElement, ExecutableElement（ConcreteNode）<br>### org.springframework.beans.factory.config.BeanDefinitionVisitor <br> BeanDefinition (Node) <br> BeanDefinitionVisitor （ConcreteVisitor）<br> GenericBeanDefinition(ConcreteNode)  |
+## _行为型UML类图_
+### 2.1 责任链
+![](out\uml\ChainOfResponsibility\ChainOfResponsibility.png)
+### 2.2 命令
+![](out\uml\Command\Command.png)
+### 2.3 解释器
+![](out\uml\Interpreter\Interpreter.png)
+### 2.4 迭代器
+![](out\uml\Iterator\Iterator.png)
+### 2.5 中介者
+![](out\uml\Mediator\Mediator.png)
+### 2.6 备忘录
+![](out\uml\Memento\Memento.png)
+### 2.7 观察者
+![](out\uml\Observer\Observer.png)
+### 2.8 状态
+![](out\uml\State\State.png)
+### 2.9 策略
+![](out\uml\Strategy\Strategy.png)
+### 2.10 模板方法
+![](out\uml\TemplateMethod\TemplateMethod.png)
+### 2.11 访问者
+![](out\uml\Visitor\Visitor.png)

@@ -1,0 +1,25 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class Context {
+    - state : State
+    + request() : void
+}
+
+class State {
+  {abstract} + handle() : void
+}
+
+class ConcreteState {
+  + handle() : void
+}
+
+ConcreteState --|> State
+
+Context o-- State
+@enduml

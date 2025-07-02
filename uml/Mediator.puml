@@ -1,0 +1,38 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class Colleague{
+    - mediator : Mediator
+    + sendFinishNotice() : void
+}
+
+class ColleagueA {
+  + toFinishStageOne() : void
+}
+
+class ColleagueB {
+  + toFinishStageTwo() : void
+}
+
+class Mediator {
+  {abstract} + assignNextStageTask(): void 
+}
+
+class ConcreteMediator {
+  + assignNextStageTask(): void 
+}
+Colleague --> Mediator
+
+ConcreteMediator --> ColleagueA
+ConcreteMediator --> ColleagueB
+
+ConcreteMediator --|> Mediator
+
+ColleagueA --|> Colleague
+ColleagueB --|> Colleague
+@enduml

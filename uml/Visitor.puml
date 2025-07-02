@@ -1,0 +1,42 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class Node {
+    + accept(visitor : Visitor) : void
+}
+
+class ConcreteNodeA {
+  - attrA : Object
+}
+
+class ConcreteNodeB {
+  - attrB : Object
+}
+
+class Visitor {
+  {abstract} + visitNodeA(nodeA : ConcreteNodeA) : void
+  {abstract} + visitNodeB(nodeB : ConcreteNodeB) : void
+}
+
+class ConcreteVisitor {
+  + visitNodeA(nodeA : ConcreteNodeA) : void
+  + visitNodeB(nodeB : ConcreteNodeB) : void  
+}
+
+class Client {
+
+}
+
+ConcreteNodeA --|> Node
+ConcreteNodeB --|> Node
+
+ConcreteVisitor --|> Visitor
+
+Client --> Node
+Client --> Visitor
+@enduml

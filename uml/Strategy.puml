@@ -1,0 +1,24 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class Context {
+    - strategy : Strategy
+    + computeTask() : Object
+}
+
+class Strategy {
+  {abstract} + useAlgorithm(): Object
+}
+
+class ConcreteStrategy {
+  + useAlgorithm(): Object
+}
+
+ConcreteStrategy --|> Strategy
+Context o-- Strategy
+@enduml

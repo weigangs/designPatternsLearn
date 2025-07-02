@@ -1,0 +1,36 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class Subject {
+   + subscribe(observer : Observer) : void 
+   + unSubscribe(observer : Observer) : void 
+   + noticeAll(): void
+}
+
+class ConcreteSubject {
+  - state : String
+  + getState() : String
+  + setState(state : String) : void
+}
+
+class Observer {
+  - subject : Subject
+  {abstract} + update() : void 
+}
+
+class ConcreteObserver {
+  - subject : ConcreteSubject
+  - selfState: String
+  + update() : void
+}
+ConcreteSubject --|> Subject
+ConcreteObserver --|> Observer
+
+ConcreteObserver --> ConcreteSubject
+Subject --> Observer
+@enduml

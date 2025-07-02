@@ -1,0 +1,28 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class CareTaker {
+    - mementoList : Mementos
+}
+
+class Memento {
+  - attrA : Object
+  - attrB : Object
+
+  + getAttrA() : Object
+    + getAttrB() : Object
+}
+
+class Originator {
+  + createMemento() : Memento
+}
+
+CareTaker o-- Memento
+
+Originator ..> Memento
+@enduml

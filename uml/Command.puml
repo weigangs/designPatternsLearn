@@ -1,0 +1,65 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class Receiver {
+     {abstract} + doSomthing(): void
+}
+
+class ReceiverA {
+     + doSomthing(): void
+}
+
+class ReceiverB {
+     + doSomthing(): void
+}
+
+class Command {
+     - _reciver : Receiver
+    {abstract} + setReceiver(receiver : Receiver): void 
+    + execute() : void
+    + cancel() : void
+}
+
+class CommandA {
+     - _reciver : Receiver
+    + setReceiver(receiver : ReceiverA): void 
+    + execute() : void
+    + cancel() : void
+}
+
+class CommandB {
+     - _reciver : Receiver
+    + setReceiver(receiver : ReceiverB): void 
+    + execute() : void
+    + cancel() : void
+}
+
+class Invoker {
+     + invoke(command : Command) : void
+}
+
+class Client {
+
+}
+
+
+ReceiverA --|> Receiver
+ReceiverB --|> Receiver
+
+CommandA --|> Command
+CommandB --|> Command
+
+CommandA --> ReceiverA
+CommandB --> ReceiverB
+
+Invoker o-- Command
+Client --> ReceiverA
+Client --> ReceiverB
+Client ..> CommandA
+Client ..> CommandB
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+
+' skinparam classAttributeIconSize 0
+' skinparam linetype ortho
+' skinparam defaultTextAlignment center
+' skinparam dpi 150
+' up to down direction
+
+class Context {
+
+}
+
+class Express {
+    {abstract} + eveluate(context: Context) : String 
+}
+
+class NonTerminalExpress {
+     +eveluate(context: Context) : String 
+}
+
+class TerminalExpress {
+     + eveluate(context: Context) : String 
+}
+
+class Client {
+
+}
+
+NonTerminalExpress --|> Express
+TerminalExpress --right|> Express
+
+Client --> Context
+Client --> Express
+NonTerminalExpress o-- Express
+
+NonTerminalExpress ..> Context
+TerminalExpress ..> Context
+
+
+
+
+@enduml

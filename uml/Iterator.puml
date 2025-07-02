@@ -1,0 +1,67 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+interface Iterator {
+  + hasNext() : bool
+  + next() : Element
+  + remove() : bool
+  + getFirst() : Element
+}
+
+class ArrayListIterator {
+    + hasNext() : bool
+  + next() : Element
+  + remove() : bool
+  + getFirst() : Element
+}
+
+class LinkedListIterator {
+    + hasNext() : bool
+  + next() : Element
+  + remove() : bool
+  + getFirst() : Element
+}
+
+class List {
+  {abstract} + getIterator() : Iterator
+  {abstract} + add(element: Element) : bool
+  {abstract} + remove(element: Element) : bool
+}
+
+class ArrayList {
+  + getIterator() : Iterator
+  + add(element: Element) : bool
+  + remove(element: Element) : bool
+}
+
+class LinkedList {
+  + getIterator() : Iterator
+  + add(element: Element) : bool
+  + remove(element: Element) : bool
+}
+
+class Client {
+
+}
+
+ArrayListIterator ..|> Iterator
+LinkedListIterator ..|> Iterator
+
+
+ArrayList --|> List
+LinkedList --|> List
+
+ArrayListIterator --> ArrayList
+LinkedListIterator --> LinkedList
+
+ArrayList ..> ArrayListIterator
+LinkedList ..> LinkedListIterator
+
+Client --> Iterator
+Client --> List
+@enduml
