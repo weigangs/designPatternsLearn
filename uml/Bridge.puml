@@ -1,0 +1,33 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class Abstraction {
+
+    + operate() : void 
+}
+
+class RefinedAbstraction {
+}
+
+class Implementor {
+ {abstract} + operateImpl(): void 
+}
+
+class ConcreteImplementorA {
+  + operateImpl() : void
+}
+
+class ConcreteImplementorB {
+  + operateImpl() : void
+}
+
+RefinedAbstraction --|> Abstraction
+Abstraction o-- Implementor
+ConcreteImplementorA --|> Implementor
+ConcreteImplementorB --|> Implementor
+@enduml

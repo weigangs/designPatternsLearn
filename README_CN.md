@@ -56,3 +56,31 @@
 ![](out\uml\TemplateMethod\TemplateMethod.png)
 ### 2.11 访问者
 ![](out\uml\Visitor\Visitor.png)
+## 3. 结构型
+|模式名称|意图|适用场景|关键参与者|应用实例|
+|------|------|------|------|------|
+|_3.1 适配器（Adapter）-类对象结构型_|让互不兼容的两个接口，可以一起工作|让已有的库或遗留的接口适配现有代码<br>互不兼容的两个系统间的桥梁<br>系统不同层次的解耦<br>让一个系统能支持不同接口|Target（要使用的目标接口）<br>Client（与Target接口协同工作）<br>Adaptee（已存在的遗留接口）<br>Adapter（对Target和Adaptee进行适配）|### FileInputStream<br> InputStream （Adaptee）<br> InputStreamReader（Adapter）<br> Reader （Target）<br>### SpringMVC HandlerAdapters <br> HandlerAdapter （Adapter）<br> Various controller types （Adaptee）<br> HTTP request handling （Target）<br> ### Spring Security – AuthenticationProvider <br> AuthenticationProvider (Adapter) <br> Your custom auth source (DB, JWT, etc.) （Adaptee）<br> Spring Security authentication flow （Target）|
+|_3.2 桥接（Bridge）-对象结构型_|将抽象与实现分离从而让各自独立改变|让接口从框架中独立出来<br>接口抽象的改变与实现的改变独立互不影响<br>在运行时改变实现部分<br>想避免因为要组合太多抽象/实现变体而使类爆炸|Abstraction（抽象类接口）<br>RefinedAbstraction（扩充Abstraction的接口）<br>Implementor（定义实现类的接口）<br>ConcreteImplementor（Implementor的具体实现）|### Spring’s JdbcTemplate and DataSource<br> JdbcTemplate  （abstraction）<br> DataSource （ implementor）<br> HikariDataSource （ConcreteImplementor）<br>###  Spring Cache Abstraction <br> CacheManager  （abstraction）<br> ConcurrentMapCacheManager （RefinedAbstraction）<br> Cache （Implementor）<br>ConcurrentMapCache (ConcreteImplementor) |
+|_3.3 组合模式（Composite）-对象结构型_|对整体和部分的操作保持一致|要表示部分与整体的概念<br>对单个对象和组合对象的操作是同一个接口<br>当对象的结构是递归结构时|Component（组合元素的统一抽象）<br>Leaf（组合元素的叶子节点）<br>Composite（定义对多个组合元素的操作对象）<br>Client（通过Component操作组合元素）|### jdk的文件对象FileSystemComponent <br> FileSystemComponent   （Component）<br> File  （Leaf）<br> Directory  （定于对子元素操作的对象）<br>###  java.awt.Container and Component <br> Component  （Component）<br> Container （Composite）<br> Button （Leaf）|
+|_3.4 装饰器（Decorator）-对象结构型_|不修改现有对象的前提下动态增加新功能|想在运行时动态的给对象新增职责<br>想简化继承关系<br>对象设计遵循开闭原则<br>想实现灵活的链式行为|Component（元素的抽象）<br>Decorator（装饰器）<br>ConcreteComponent（具体元素对象）<br>ConcreteDecorator（具体的装饰器）|### java.io Streams <br> InputStream   （Component）<br> FileInputStream  （ConcreteComponent）<br> BufferedInputStream  （Decorators）|
+|_3.5 外观（Facade）-对象结构型_|为复杂类组成的系统抽象一个简单接口，对外部提供服务|想简化对复杂系统的调用<br> 将客户端与第三方库的内部实现类解耦<br>包装遗留代码，提供一个清晰明了的接口<br>组织管理API层|Facade（子系统接口）<br>Subsystem classes（子系统各功能类）|### java.util.logging.Logger <br> Logger （Facade）<br> log levels, formatters, handlers  （classes）<br> ### JdbcTemplate <br> JdbcTemplate （Facade）<br> support classes （Sub classes）|
+|_3.6 享元（Flyweight）-对象结构型_|最大化对象的共享，从而达到内存使用最小|有大量对象共享内部状态<br> 想在高内存容量系统中减少内存使用量<br>想缓存，重新使用不可修改的数据<br>想分离固有状态和外部状态|Flyweight（共享元素抽象）<br>ConcreteFlyweight（具体被共享的元素）<br> FlyweightFactory （管理Flyweight的工厂）|### java.util.logging.Logger <br> Logger （Facade）<br> log levels, formatters, handlers  （classes）<br> ### JdbcTemplate <br> JdbcTemplate （Facade）<br> support classes （Sub classes）|
+|_3.7 代理（Proxy）-对象结构型_|控制其它对象对某个对象的访问|保护真是对象（如认证）<br> 延迟加载开销大的对象<br>在真是对象的方法调用前后增加功能<br>用本地对象代表远程资源|Proxy（代理抽象）<br>Subject（具体实体和代理对象的共同接口）<br> RealSubject （具体实体对象）|### java.lang.reflect.Proxy <br> InvocationHandler （Proxy）<br> 具体类  （RealSubject）<br> ### AOP Proxy |
+## _结构型UML类图_
+### 3.1 适配器
+#### 3.1.1 类适配器
+![](out\uml\AdapterClass\AdapterClass.png)
+#### 3.1.2 对象适配器
+![](out\uml\AdapterObject\AdapterObject.png)
+### 3.2 桥接
+![](out\uml\Bridge\Bridge.png)
+### 3.3 组合
+![](out\uml\Composite\Composite.png)
+### 3.4 装饰器
+![](out\uml\Decorator\Decorator.png)
+### 3.5 外观
+![](out\uml\Facade\Facade.png)
+### 3.6 享元
+![](out\uml\Flyweight\Flyweight.png)
+### 3.7 代理
+![](out\uml\Proxy\Proxy.png)

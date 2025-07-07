@@ -1,0 +1,36 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class Component {
+    {abstract} + operate() : void 
+}
+
+class ConcreteComponent {
+  + operate() : void 
+}
+
+class Decorator {
+    + operate() : void 
+}
+
+class ConcreteDecoratorA {
+  - addedState : Object
+      + operate() : void 
+}
+
+class ConcreteDecoratorB {
+      + operate() : void 
+      + addedBehavior() : void 
+}
+
+ConcreteComponent --|> Component
+Decorator --|> Component
+Decorator o-- Component
+ConcreteDecoratorA --|> Decorator
+ConcreteDecoratorB --|> Decorator
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class Target {
+    {abstract} + request() : void 
+}
+
+class Adaptee {
+    + requestSpecial() : void
+}
+
+class Adapter {
+    + request() : void
+}
+
+class Client {
+
+}
+
+Adapter --|> Target
+Adapter --|> Adaptee
+
+Client --> Target
+@enduml

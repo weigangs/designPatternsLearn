@@ -1,0 +1,30 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class Component {
+    {abstract} + operate() : void 
+}
+
+class Leaf {
+    + operate() : void 
+}
+
+class Composite {
+    + operate() : void 
+}
+
+class Client {
+
+}
+
+Leaf --|> Component
+Composite --|> Component
+Composite o-- Component
+
+Client --> Component
+@enduml

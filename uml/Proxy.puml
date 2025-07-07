@@ -1,0 +1,24 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class Subject {
+    {abstract} + request() : void 
+}
+
+class RealSubject {
+  + request() : void 
+}
+
+class Proxy {
+  + request() : void 
+}
+
+RealSubject --|> Subject
+Proxy --|> Subject
+Proxy --> RealSubject
+@enduml

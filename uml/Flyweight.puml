@@ -1,0 +1,37 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class Flyweight {
+    {abstract} + operate(extrinsicState : State) : void
+}
+ 
+class ConcreteFlyweight {
+  - intrinsicState : State
+  + operate(extrinsicState : State) : void
+}
+
+class UnsharedConcreteFlyweight {
+  - extrinsicState : State
+  + operate(extrinsicState : State) : void
+}
+
+class FlyweightFactory {
+  + getFlyweight(key : String) : Flyweight
+}
+
+class Client {
+
+}
+
+ConcreteFlyweight --|> Flyweight
+UnsharedConcreteFlyweight --|> Flyweight
+FlyweightFactory o-- Flyweight
+Client --> ConcreteFlyweight
+Client --> UnsharedConcreteFlyweight
+Client --> FlyweightFactory
+@enduml

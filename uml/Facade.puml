@@ -1,0 +1,27 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+skinparam defaultTextAlignment center
+skinparam dpi 150
+' up to down direction
+
+class CompilerFacade {
+    + compileFile() :void
+}
+
+frame "Compiler Layer" {
+    class CodeGenerator
+    class Scanner
+    class Parser
+    class ByteCodeStream
+    CodeGenerator --> ByteCodeStream
+}
+
+
+
+CompilerFacade ..>  CodeGenerator
+CompilerFacade ..>  Scanner
+CompilerFacade ..>  Parser
+
+@enduml
