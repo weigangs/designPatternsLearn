@@ -18,7 +18,6 @@
 ![](out\uml\Prototype\Prototype.png)
 ### 1.5 单例模式
 ![](out\uml\Singleton\Singleton.png)
-### 1.2 
 ## 2. 行为型
 |模式名称|意图|适用场景|关键参与者|应用实例|
 |------|------|------|------|------|
